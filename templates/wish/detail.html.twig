@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() ~ wish.title }}
+{% endblock %}
+
+{% block body %}
+    <div class="mx-auto m-5">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{ asset('png/' ~ (wish.image ? wish.image : 'defautJC.png')) }}" alt="illustration {{ wish.title }}"/>
+            <div class="card-body">
+                <h5 class="card-title">{{ wish.title }}</h5>
+                <p>[{{ wish.category.name }}]</p>
+                <i>Created by {{ wish.author }} on {{ wish.dateCreated | date('d/m/y H:i') }}</i>
+                <p class="card-text">{{ wish.description }}</p>
+                <form action="{{ path('wishes_delete', {id: wish.id}) }}" method="post" style="display:inline;">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+
+                <a href="{{ path('wishes_edit', {id: wish.id}) }}" class="btn btn-secondary">Modify</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

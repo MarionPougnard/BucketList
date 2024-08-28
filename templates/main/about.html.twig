@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() ~ title }}
+{% endblock %}
+
+{% block body %}
+
+    <p> {{ contenu }}</p>
+
+    {% for personne in team %}
+        <article>
+            <h3>{{ personne.firstname ~ ' ' ~ personne.lastname }}</h3>
+            {% if personne.firstname is same as 'Fabien' %}
+                <span> ♡ </span>
+            {% endif %}
+            <img src="{{ personne.picture }}" alt="{{ 'photo de ' ~ personne.firstname ~ ' ' ~ personne.lastname }}">
+            <p>{{ personne.dateOfBirth | date('d/m/Y') }}</p>
+            <p>{{ personne.creatorOf }}</p>
+            <p>{{ personne.description }}</p>
+        </article>
+    {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Test{% endblock %}
+
+{% block body %}
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! </h1>
+
+    <ul>
+        <li>Data : {{ name }}</li>
+        <li>Data : {{ age }} ans</li>
+        <li>hobbies : {{ hobbies | join(', ') }}</li>
+        <li>now : {{ now | date('d-m-y')}}</li>
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+<nav class="maNavbar navbar navbar-expand-xl navbar-light">
+    <img src="{{ asset('png/popcorn.png') }}" alt="Bucket-List logo"/>
+    <a class="navbar-brand" href="#">Bucket-List</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ path('home') }}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('wishes_list') }}">All wishes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('about') }}">About Us</a>
+            </li>
+            {% if app.user %}
+                <li class="nav-item">
+                <a class="nav-link" href="{{ path('wishes_addForm') }}">Add yours</a>
+                </li>
+                <li class="nav-item">
+                Hello {{ app.user.username }}
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_login') }}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_register') }}">Register</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
